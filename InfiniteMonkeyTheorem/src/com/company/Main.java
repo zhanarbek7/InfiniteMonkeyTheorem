@@ -8,44 +8,27 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-	    String name = "joe";
+	    String name = "Erlan Omarbekov";
         Random rand = new Random();
-        List<String> reserve = new ArrayList<>();
+        int i = 0;
         int counter = 0;
         StringBuilder randomWord = new StringBuilder("");
-        while(true) {
-            for(int i = 0; i<name.length(); i++) {
-                for(int j = 0; j<name.length(); j++) {}
-                char temp = (char) (rand.nextInt(123-98)+98);
+        while(!name.contentEquals(randomWord)){
+            char temp = (char) (rand.nextInt(123));
+            if(temp==name.charAt(i)){
                 randomWord.append(temp);
-
-                if(name.contentEquals(randomWord)){
-                    System.out.println("Random word: "+randomWord);
-                    System.out.println("Name: "+name);
-                    System.out.println("Успешно нашли c " + counter +" раза!");
-                    System.out.println(bruteforce(reserve));
+                if(randomWord.equals(name)){
                     System.exit(0);
                 }
+                i++;
             }
-            System.out.println("Eщё не нашли, получившееся слово: "+randomWord);
-            reserve.add(String.valueOf(randomWord));
-            randomWord = new StringBuilder("");
             counter++;
+            System.out.println(counter+"-йы раз "+"   Попалась буква "+temp+" "+"\n");
+            System.out.println("Собранное слово = \n"  + randomWord+"\n");
         }
     }
 
-    public static boolean bruteforce(List<String> input) {
-        for (int i = 0; i < input.size(); i++) {
-            for (int j = 0; j < input.size(); j++) {
-                if (input.get(i).equals(input.get(j)) && i != j) {
-                    System.out.println(input.get(i));
-                    System.out.println(input.get(j));
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
+
 
 
 }
